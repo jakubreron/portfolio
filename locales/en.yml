@@ -7,7 +7,7 @@ navbar:
   menu:
     open: Open the menu
     close: Close the menu
-    home: Home 
+    home: Home
     experience: Experience
     contact: Contact
 not-found: Not found
