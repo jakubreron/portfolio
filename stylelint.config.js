@@ -1,16 +1,11 @@
 module.exports = {
   extends: [
-    'stylelint-config-standard',
-    'stylelint-config-prettier',
-  ],
-
-  plugins: [
-    'stylelint-scss',
+    'stylelint-config-standard-scss',
+    'stylelint-config-recommended-vue',
   ],
 
   // https://stylelint.io/user-guide/configuration
   rules: {
-    'at-rule-no-unknown': null,
     'scss/at-rule-no-unknown': [
       true,
       {
@@ -40,7 +35,9 @@ module.exports = {
     'font-family-name-quotes': 'always-where-recommended',
     'comment-whitespace-inside': 'always',
     'at-rule-no-vendor-prefix': true,
-    'rule-empty-line-before': 'always-multi-line',
+    'rule-empty-line-before': ['always-multi-line', {
+      except: ['after-single-line-comment', 'first-nested'],
+    }],
     'selector-pseudo-element-colon-notation': 'double',
     'selector-pseudo-class-parentheses-space-inside': 'never',
     'media-feature-range-operator-space-before': 'always',

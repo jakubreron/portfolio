@@ -5,9 +5,14 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppContainer: typeof import('./components/app-container.vue')['default']
+    AppHamburgerBtn: typeof import('./components/app-hamburger-btn.vue')['default']
+    AppShadowText: typeof import('./components/app-shadow-text.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TheHeader: typeof import('./components/the-header.vue')['default']
+    TheNavbar: typeof import('./components/the-navbar.vue')['default']
   }
 }
 

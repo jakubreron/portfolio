@@ -1,0 +1,20 @@
+@use 'sass:math';
+@use 'variables' as v;
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return math.div($number, ($number * 0 + 1));
+  }
+
+  @return $number;
+}
+
+@function create-unit-size($relative-size, $unit: rem, $parent-size: v.$body-font-size) {
+  $calculated-size: math.div(strip-unit($relative-size), strip-unit($parent-size));
+
+  @if ($unit == em) {
+    @return $calculated-size * 1em; 
+  }
+
+  @return $calculated-size * 1rem;
+}

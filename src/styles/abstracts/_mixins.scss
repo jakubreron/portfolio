@@ -1,0 +1,36 @@
+@mixin pseudo-styles($content: '') {
+  @apply block;
+  @apply absolute;
+
+  content: $content;
+
+  @content;
+}
+
+@mixin prepare-focus($x: 0, $y: $x) {
+  @apply relative;
+
+  &::before {
+    @include pseudo-styles {
+      @apply pointer-events-none;
+      @apply opacity-0;
+      @apply transition-opacity;
+      @apply border border-current;
+      @apply rounded;
+
+      top: $y;
+      right: $x;
+      bottom: $y;
+      left: $x;
+
+      @content;
+    }
+  }
+
+  &:focus-visible {
+
+    &::before {
+      @apply opacity-50;
+    }
+  }
+}

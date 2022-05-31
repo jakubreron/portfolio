@@ -1,4 +1,6 @@
-<!-- TODO: create a proper default layout -->
 <template>
-  <router-view />
+  <the-header />
+  <main>
+    <router-view />
+  </main>
 </template>
