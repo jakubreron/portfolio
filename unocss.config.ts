@@ -9,6 +9,7 @@ import {
   transformerVariantGroup,
 } from 'unocss'
 
+// TODO: fix dark mode on media query detection
 // TODO: setup defaults as following
 // $primary-font-family: 'M PLUS Rounded 1c';
 // $secondary-font-family: 'Roboto';
