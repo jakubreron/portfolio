@@ -1,14 +1,13 @@
-button:
-  about: About
-  back: Back
-  go: GO
-  home: Home
-  toggle_dark: Toggle dark mode
-  toggle_langs: Change languages
-intro:
-  desc: Opinionated Vite Starter Template
-  dynamic-route: Demo of dynamic route
-  hi: Hi, {name}!
-  aka: Also known as
-  whats-your-name: What's your name?
+routes:
+  homepage: Homepage
+accessibility:
+  skip_to_content: Skip to content
+navbar:
+  heading: Primary Navigation
+  menu:
+    open: Open the menu
+    close: Close the menu
+    home: Home 
+    experience: Experience
+    contact: Contact
 not-found: Not found

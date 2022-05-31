@@ -35,4 +35,14 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
   safelist: 'prose prose-sm m-auto text-left'.split(' '),
+  theme: {
+    colors: {
+      light: '#f1f1f1',
+      dark: '#191919',
+      brand: {
+        primary: '#fe5151',
+        secondary: ' #0096a6',
+      },
+    },
+  },
 })

@@ -1,14 +1,6 @@
-button:
-  about: O nas
-  back: Wróć
-  go: WEJDŹ
-  home: Strona główna
-  toggle_dark: Ustaw tryb nocny
-  toggle_langs: Zmień język
-intro:
-  desc: Opiniowany szablon startowy Vite
-  dynamic-route: Demonstracja dynamicznego route
-  hi: Cześć, {name}!
-  aka: Znany też jako
-  whats-your-name: Jak masz na imię?
-not-found: Nie znaleziono
+routes:
+  homepage: Strona główna
+accessibility:
+  skip_to_content: Przejdź do treści
+navbar:
+  heading: Główna nawigacja
