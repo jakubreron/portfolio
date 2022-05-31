@@ -6,17 +6,12 @@ body,
   padding: 0;
 }
 
-body {
+html {
   @apply bg-light text-dark;
   @apply dark:bg-dark dark:text-light;
 }
 
-html {
-  &.dark {
-    background: #121212;
-  }
-}
-
+// TODO: change it, legacy code
 #nprogress {
   pointer-events: none;
 
