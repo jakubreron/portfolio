@@ -45,5 +45,6 @@ module.exports = {
     'media-feature-parentheses-space-inside': 'never',
     'media-feature-colon-space-before': 'never',
     'media-feature-colon-space-after': 'always',
+    'scss/dollar-variable-empty-line-before': 'before-dollar-variable',
   },
 }

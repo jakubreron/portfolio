@@ -2,13 +2,12 @@
 @use '~/styles/abstracts/functions' as f;
 
 a,
-[w\:sr~="focus:not-only"] {
-  @include m.prepare-focus(f.create-unit-size(-5))
+[w\:sr~='focus:not-only'] {
+  @include m.prepare-focus(f.create-unit-size(-5));
 }
 
-
-[w\:sr~="focus:not-only"] {
+[w\:sr~='focus:not-only'] {
   &:focus {
-    @apply relative #{!important};
+    position: relative !important;
   }
 }

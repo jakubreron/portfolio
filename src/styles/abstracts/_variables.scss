@@ -1,1 +1,31 @@
+$dark-mode: true;
+
 $body-font-size: 16px;
+
+$primary-font-family: 'M PLUS Rounded 1c';
+$secondary-font-family: 'Roboto';
+
+$transitions: (
+  'slow': .75,
+  'medium': .5,
+  'quick': .3,
+  'quickest': .2
+);
+
+$colors: (
+  'light': #f1f1f1,
+  'dark': #191919,
+  'brand': (
+    'primary': #fe5151,
+    'secondary': #0096a6
+  )
+);
+
+$breakpoints: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1536px,
+  '3xl': 1920px,
+);

@@ -1,23 +1,24 @@
-@mixin pseudo-styles($content: '') {
-  @apply block;
-  @apply absolute;
+@use 'sass:map';
+@use 'variables' as v;
 
+@mixin pseudo-styles($content: '') {
   content: $content;
+  display: block;
+  position: absolute;
 
   @content;
 }
 
 @mixin prepare-focus($x: 0, $y: $x) {
-  @apply relative;
+  position: relative;
 
   &::before {
     @include pseudo-styles {
-      @apply pointer-events-none;
-      @apply opacity-0;
-      @apply transition-opacity;
-      @apply border border-current;
-      @apply rounded;
-
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity map.get(v.$transitions, 'quickest');
+      border: 1px solid currentcolor;
+      border-radius: 50%;
       top: $y;
       right: $x;
       bottom: $y;
@@ -28,9 +29,22 @@
   }
 
   &:focus-visible {
-
     &::before {
-      @apply opacity-50;
+      opacity: .5;
     }
+  }
+}
+
+@mixin dark-mode {
+  @if v.$dark-mode {
+    @media (prefers-color-scheme: dark) {
+      @content;
+    }
+  }
+}
+
+@mixin media($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
   }
 }

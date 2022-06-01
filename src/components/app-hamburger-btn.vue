@@ -31,9 +31,11 @@ const hamburgerClasses = computed(() => {
 
 <style module lang="scss">
 @use 'sass:math';
+@use 'sass:map';
 
 @use '~/styles/abstracts/mixins' as m;
 @use '~/styles/abstracts/functions' as f;
+@use '~/styles/abstracts/variables' as v;
 
 $size: f.create-unit-size(48);
 
@@ -42,7 +44,7 @@ $stripe-offset: math.div($size, 3.2);
 $stripe-width: math.div($size, 2);
 
 .hamburger {
-  @apply relative;
+  position: relative;
 
   height: $size;
   width: $size;
@@ -58,46 +60,46 @@ $stripe-width: math.div($size, 2);
   &,
   &::before,
   &::after {
-    @apply rounded-full;
+    border-radius: 100%;
   }
 
   &::before,
   &::after {
     @include m.pseudo-styles;
 
-    @apply inset-0;
-    @apply opacity-0;
+    inset: 0;
+    opacity: 0;
   }
 
   &::before {
-    @apply bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10;
-    @apply transform-gpu scale-25;
+    // @apply bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10;
+    // @apply transform-gpu scale-25;
 
     transition: 200ms;
     transition-property: opacity, transform;
   }
 
   &::after {
-    @apply transition-opacity;
-    @apply border border-current;
+    transition: opacity map.get(v.$transitions, 'quickest');
+    border: 1px solid currentColor;
   }
 
   &:hover {
     &::before {
-      @apply opacity-100;
-      @apply scale-100;
+      opacity: 1;
+      transform: scale(1);
     }
   }
 
   &:focus-visible,
   &:active {
     &::after {
-      @apply opacity-25;
+      opacity: .25;
     }
   }
 
   .icon {
-    @apply block;
+    display: block;
 
     transition: background-color 200ms;
     will-change: background-color;
@@ -105,20 +107,23 @@ $stripe-width: math.div($size, 2);
     &,
     &::before,
     &::after {
-      background-color: red;
-      @apply rounded;
-      @apply pointer-events-none;
-      @apply bg-dark dark:bg-light;
-      @apply m-auto;
+      border-radius: f.create-unit-size(4);
+      pointer-events: none;
+      background-color: map.get(v.$colors, 'dark');
+      margin: auto;
 
       height: $stripe-thickness;
       width: $stripe-width;
+
+      @include m.dark-mode {
+        background-color: map.get(v.$colors, 'light');
+      }
     }
 
     &::before,
     &::after {
       @include m.pseudo-styles;
-      @apply transition-transform duration-300;
+      transition: transform map.get(v.$transitions, 'quick')
     }
 
     &::before {
@@ -133,7 +138,7 @@ $stripe-width: math.div($size, 2);
 
   &--active {
     .icon {
-      @apply bg-transparent;
+      background-color: transparent;
 
       &::before {
         $translateY: -$stripe-offset +math.div($size, 2) - math.div($stripe-thickness, 2);

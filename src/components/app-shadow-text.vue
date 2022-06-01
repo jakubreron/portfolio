@@ -33,18 +33,18 @@ $dark\:stroke-color: theme('colors.light');
     // NOTE: "content" only allows the strings, we cannot use the v-bind('props.value') (it creates a css variable) here
     @include m.pseudo-styles(attr(data-text));
 
-    @apply pointer-events-none;
-    @apply font-weight-black;
-    @apply text-transparent;
-    @apply -left-1/3 -top-full;
-    @apply opacity-20;
+    pointer-events: none;
+    // @apply font-weight-black;
+    color: transparent;
+    // @apply -left-1/3 -top-full;
+    opacity: .2;
 
     font-size: $font-size;
     -webkit-text-stroke: $stroke-width;
     -webkit-text-stroke-color: $stroke-color;
 
     @media (prefers-color-scheme: dark) {
-      @apply opacity-10;
+      opacity: 10;
       -webkit-text-stroke-color: $dark\:stroke-color;
     }
   }

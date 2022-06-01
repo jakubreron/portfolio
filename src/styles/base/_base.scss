@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 html,
 body,
 #app {
@@ -6,23 +8,14 @@ body,
   padding: 0;
 }
 
-html {
-  @apply bg-light text-dark;
-  @apply dark:bg-dark dark:text-light;
-}
+body {
+  background-color: map.get($colors, 'light');
+  color: map.get($colors, 'dark');
+  font-family: $primary-font-family, sans-serif;
+  font-size: $body-font-size;
 
-// TODO: change it, legacy code
-#nprogress {
-  pointer-events: none;
-
-  .bar {
-    background: rgb(13 148 136);
-    opacity: .75;
-    position: fixed;
-    z-index: 1031;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
+  @include dark-mode {
+    background-color: map.get($colors, 'dark');
+    color: map.get($colors, 'light');
   }
 }

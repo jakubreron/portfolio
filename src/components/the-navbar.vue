@@ -77,24 +77,28 @@ const links: RouterLink[] = [
 </template>
 
 <style module lang="scss">
+@use 'sass:map';
+@use '~/styles/abstracts/variables' as v;
+
 .nav {
-  @apply fixed;
-  @apply inset-0;
-  @apply opacity-0;
-  @apply transition-opacity;
-  @apply pointer-events-none;
-  @apply py-4 md:py-6 lg:py-8;
+  position: fixed;
+  inset: 0;
+  opacity: 0;
+  transition: opacity map.get(v.$transitions, 'quickest');
+  pointer-events: none;
+
+  // @apply py-4 md:py-6 lg:py-8;
 
   /* TODO: get height from the nav */
   margin-top: 76px;
 
   &__menu {
-    @apply text-right;
+    text-align: right;
   }
 
   &--active {
-    @apply opacity-100;
-    @apply pointer-events-auto;
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 </style>
