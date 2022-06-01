@@ -1,6 +1,7 @@
 @use '~/styles/abstracts/mixins' as m;
 @use '~/styles/abstracts/functions' as f;
 
+// TODO: verify and change
 a,
 [w\:sr~='focus:not-only'] {
   @include m.prepare-focus(f.create-unit-size(-5));
