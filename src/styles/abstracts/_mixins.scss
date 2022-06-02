@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'functions' as f;
 @use 'variables' as v;
 
 @mixin pseudo-styles($content: '') {
@@ -18,7 +19,7 @@
       opacity: 0;
       transition: opacity map.get(v.$transitions, 'quickest');
       border: 1px solid currentcolor;
-      border-radius: 50%;
+      border-radius: f.create-unit-size(4);
       top: $y;
       right: $x;
       bottom: $y;
@@ -36,7 +37,7 @@
 }
 
 @mixin dark-mode {
-  @if v.$dark-mode {
+  @if v.$dark-mode-detection {
     @media (prefers-color-scheme: dark) {
       @content;
     }

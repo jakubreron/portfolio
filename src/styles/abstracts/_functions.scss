@@ -9,7 +9,7 @@
   @return $number;
 }
 
-@function create-unit-size($relative-size, $unit: rem, $parent-size: v.$body-font-size) {
+@function create-unit-size($relative-size, $unit: rem, $parent-size: v.$font-size-body) {
   $calculated-size: math.div(strip-unit($relative-size), strip-unit($parent-size));
 
   @if $unit == em {

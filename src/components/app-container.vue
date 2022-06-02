@@ -7,17 +7,19 @@
 <style lang="scss">
 @use 'sass:map';
 
+@use '~/styles/abstracts/functions' as f;
 @use '~/styles/abstracts/mixins' as m;
 @use '~/styles/abstracts/variables' as v;
 
-.container {
-  $px: 1rem;
+$px: f.create-unit-size(16);
 
+.container {
+  --px: #{$px};
+  padding: 0 var(--px);
   margin: 0 auto;
-  padding: 0 $px;
 
   @include m.media(map.get(v.$breakpoints, 'md')) {
-    padding: 0 $px * 2;
+    --px: #{$px * 2};
   }
 }
 </style>

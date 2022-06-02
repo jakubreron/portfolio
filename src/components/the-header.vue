@@ -47,7 +47,7 @@ const delimiter = '|'
       </app-shadow-text>
       <a
         href="#main"
-        un-sr="only focus:not-only"
+        class="sr-only focus:not-sr-only"
         v-text="$t('accessibility.skip_to_content')"
       />
       <the-navbar />

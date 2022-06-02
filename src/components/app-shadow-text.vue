@@ -16,36 +16,43 @@ const props = withDefaults(defineProps<Props>(), {
 </template>
 
 <style module lang="scss">
-@use '~/styles/abstracts/mixins' as m;
+@use 'sass:map';
+@use 'sass:math';
+
 @use '~/styles/abstracts/functions' as f;
+@use '~/styles/abstracts/mixins' as m;
+@use '~/styles/abstracts/variables' as v;
 
 $font-size: f.create-unit-size(100);
-$stroke-width: f.create-unit-size(1, em, 100);
 
-// TODO: unocss doesn't support this yet
-$stroke-color: theme('colors.dark');
-$dark\:stroke-color: theme('colors.light');
+$stroke-width: f.create-unit-size(1, em, 100);
+$stroke-color: map.get(v.$colors, 'dark');
+$dark-stroke-color: map.get(v.$colors, 'light');
 
 .shadow-text {
-  @apply relative;
+  position: relative;
 
   &::before {
     // NOTE: "content" only allows the strings, we cannot use the v-bind('props.value') (it creates a css variable) here
     @include m.pseudo-styles(attr(data-text));
 
-    pointer-events: none;
-    // @apply font-weight-black;
-    color: transparent;
-    // @apply -left-1/3 -top-full;
-    opacity: .2;
-
-    font-size: $font-size;
     -webkit-text-stroke: $stroke-width;
     -webkit-text-stroke-color: $stroke-color;
 
+    color: transparent;
+    opacity: .2;
+
+    pointer-events: none;
+
+    top: -100%;
+    left: -#{math.div(100, 3) * 1%};
+
+    font-size: $font-size;
+    font-weight: map.get(v.$font-primary-weights, 'black');
+
     @media (prefers-color-scheme: dark) {
-      opacity: 10;
-      -webkit-text-stroke-color: $dark\:stroke-color;
+      -webkit-text-stroke-color: $dark-stroke-color;
+      opacity: .1;
     }
   }
 }

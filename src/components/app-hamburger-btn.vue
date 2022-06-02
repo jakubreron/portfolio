@@ -72,11 +72,10 @@ $stripe-width: math.div($size, 2);
   }
 
   &::before {
-    // @apply bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10;
-    // @apply transform-gpu scale-25;
-
-    transition: 200ms;
+    background-color: map.get(v.$colors, 'dark');
+    opacity: .1;
     transition-property: opacity, transform;
+    transition: map.get(v.$transitions, 'quickest');
   }
 
   &::after {
@@ -114,10 +113,6 @@ $stripe-width: math.div($size, 2);
 
       height: $stripe-thickness;
       width: $stripe-width;
-
-      @include m.dark-mode {
-        background-color: map.get(v.$colors, 'light');
-      }
     }
 
     &::before,
