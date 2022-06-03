@@ -6,18 +6,6 @@ module.exports = {
 
   // https://stylelint.io/user-guide/configuration
   rules: {
-    'scss/at-rule-no-unknown': [
-      true,
-      {
-        ignoreAtRules: [
-          'tailwind',
-          'apply',
-          'variants',
-          'responsive',
-          'screen',
-        ],
-      },
-    ],
     'indentation': 2,
     'string-quotes': 'single',
     'no-duplicate-selectors': true,
@@ -45,6 +33,8 @@ module.exports = {
     'media-feature-parentheses-space-inside': 'never',
     'media-feature-colon-space-before': 'never',
     'media-feature-colon-space-after': 'always',
-    'scss/dollar-variable-empty-line-before': 'before-dollar-variable',
+    'max-line-length': [120, {
+      ignore: 'comments',
+    }],
   },
 }

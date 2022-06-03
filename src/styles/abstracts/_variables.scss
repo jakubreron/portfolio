@@ -1,28 +1,23 @@
 $dark-mode-detection: true;
-
 $font-size-body: 16px;
-
 $font-primary: 'M PLUS Rounded 1c';
 $font-primary-weights: (
   'light': 300,
   'normal': 400,
   'black': 900
 );
-
 $font-secondary: 'Roboto';
 $font-secondary-weights: (
   'light': 300,
   'normal': 400,
   'black': 700
 );
-
 $transitions: (
   'slow': .75,
   'medium': .5,
   'quick': .3,
   'quickest': .2
 );
-
 $colors: (
   'light': #f1f1f1,
   'dark': #191919,
@@ -31,7 +26,6 @@ $colors: (
     'secondary': #0096a6
   )
 );
-
 $breakpoints: (
   'sm': 640px,
   'md': 768px,
