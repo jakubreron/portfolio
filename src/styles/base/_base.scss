@@ -9,8 +9,8 @@ body,
 }
 
 body {
-  background-color: map.get($colors, 'light');
-  color: map.get($colors, 'dark');
+  background-color: var(--light-100);
+  color: var(--dark-100);
   font-family: $font-primary, sans-serif;
   font-size: $font-size-body;
 }

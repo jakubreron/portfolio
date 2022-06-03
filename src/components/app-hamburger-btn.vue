@@ -72,7 +72,7 @@ $stripe-width: math.div($size, 2);
   }
 
   &::before {
-    background-color: map.get(v.$colors, 'dark');
+    background-color: var(--dark-100);
     opacity: .1;
     transition-property: opacity, transform;
     transition: map.get(v.$transitions, 'quickest');
@@ -108,7 +108,7 @@ $stripe-width: math.div($size, 2);
     &::after {
       border-radius: f.create-unit-size(4);
       pointer-events: none;
-      background-color: map.get(v.$colors, 'dark');
+      background-color: var(--dark-100);
       margin: auto;
 
       height: $stripe-thickness;

@@ -36,14 +36,6 @@
   }
 }
 
-@mixin dark-mode {
-  @if v.$dark-mode-detection {
-    @media (prefers-color-scheme: dark) {
-      @content;
-    }
-  }
-}
-
 @mixin media($breakpoint) {
   @media (min-width: $breakpoint) {
     @content;

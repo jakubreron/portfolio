@@ -26,8 +26,8 @@ const props = withDefaults(defineProps<Props>(), {
 $font-size: f.create-unit-size(100);
 
 $stroke-width: f.create-unit-size(1, em, 100);
-$stroke-color: map.get(v.$colors, 'dark');
-$dark-stroke-color: map.get(v.$colors, 'light');
+$stroke-color: var(--dark-100);
+$dark-stroke-color: var(--light-100);
 
 .shadow-text {
   position: relative;

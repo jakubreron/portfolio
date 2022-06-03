@@ -1,1 +1,12 @@
-// default theme
+$light-theme: (
+  'light': (
+    '100': #f1f1f1,
+  ),
+  'dark': (
+    '100': #191919,
+  ),
+  'brand': (
+    'primary': #fe5151,
+    'secondary': #0096a6
+  )
+);

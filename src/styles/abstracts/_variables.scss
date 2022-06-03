@@ -1,4 +1,3 @@
-$dark-mode-detection: true;
 $font-size-body: 16px;
 $font-primary: 'M PLUS Rounded 1c';
 $font-primary-weights: (
@@ -17,14 +16,6 @@ $transitions: (
   'medium': .5,
   'quick': .3,
   'quickest': .2
-);
-$colors: (
-  'light': #f1f1f1,
-  'dark': #191919,
-  'brand': (
-    'primary': #fe5151,
-    'secondary': #0096a6
-  )
 );
 $breakpoints: (
   'sm': 640px,
