@@ -10,12 +10,12 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <component :is="tag" class="container" :data-type="type">
+  <component :is="tag" :class="$style.container" :data-type="type">
     <slot />
   </component>
 </template>
 
-<style lang="scss">
+<style module lang="scss">
 @use 'sass:map';
 @use 'sass:math';
 
@@ -26,6 +26,12 @@ withDefaults(defineProps<Props>(), {
 $base-padding-x: f.create-unit-size(16);
 $base-max-width: f.create-unit-size(640);
 
+$types: (
+  'narrow': $base-max-width,
+  'standard': $base-max-width * 1.5,
+  'wide': $base-max-width * 2,
+);
+
 .container {
   --padding-x: #{$base-padding-x};
   --max-width: 100%;
@@ -33,16 +39,11 @@ $base-max-width: f.create-unit-size(640);
   width: min(100% - var(--padding-x), var(--max-width));
   margin: 0 auto;
 
-  &[data-type='narrow'] {
-    --max-width: #{$base-max-width};
-  }
-
-  &[data-type='standard'] {
-    --max-width: #{$base-max-width * 1.5};
-  }
-
-  &[data-type='wide'] {
-    --max-width: #{$base-max-width * 2};
+  @each $type,
+  $max-width in $types {
+    &[data-type='#{$type}'] {
+      --max-width: #{$max-width};
+    }
   }
 
   @include m.media(map.get(v.$breakpoints, 'md')) {

@@ -11,7 +11,8 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const style = useCssModule()
-const hamburgerClasses = computed(() => {
+
+const classNames = computed(() => {
   const baseStyles = [
     style.hamburger,
     props.alignment === 'right'
@@ -19,12 +20,14 @@ const hamburgerClasses = computed(() => {
       : style['hamburger--left'],
   ]
 
-  return props.isActive ? [...baseStyles, style['hamburger--active']] : baseStyles
+  return props.isActive
+    ? [...baseStyles, style['hamburger--active']]
+    : baseStyles
 })
 </script>
 
 <template>
-  <button :aria-label="ariaLabel" :class="hamburgerClasses">
+  <button :aria-label="ariaLabel" :class="classNames">
     <span :class="$style.icon" />
   </button>
 </template>
