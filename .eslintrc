@@ -1,3 +1,14 @@
 {
-  "extends": "@antfu"
+  "extends": "@antfu",
+  "rules": {
+    "no-param-reassign": "error",
+    "new-cap": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "no-invalid-this": "error",
+    "prefer-destructuring": [
+      "error",
+      { "array": true, "object": true },
+      { "enforceForRenamedProperties": true }
+    ]
+  }
 }
