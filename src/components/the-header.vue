@@ -12,21 +12,17 @@ const delimiter = '|'
 
 <template>
   <header
-    un-p="y-4 md:y-6 lg:y-8"
+    :class="$style.header"
     aria-labelledby="the-header-heading"
   >
-    <app-container
-      class="flex"
-      un-items="center"
-      un-justify="between"
-    >
+    <app-container :class="$style.container">
       <app-shadow-text
         id="the-header-heading"
         tag="h1"
         un-max-w="3/4"
         un-font="weight-light"
         un-text="2xl md:3xl dark:light dark:opacity-50"
-        :value="$constants.brandName"
+        :value="$constants.brand.name"
       >
         <router-link
           un-display="block"
@@ -37,10 +33,10 @@ const delimiter = '|'
             translate="no"
             class="truncate"
             un-display="block"
-            v-text="$constants.brandName"
+            v-text="$constants.brand.name"
           />
           <span
-            un-sr="only"
+            class="sr-only"
             v-text="`${delimiter} ${seoTitle} `"
           />
         </router-link>
@@ -56,5 +52,28 @@ const delimiter = '|'
 </template>
 
 <style module lang="scss">
+@use 'sass:map';
+@use '~/styles/abstracts';
 
+$header-padding-y: abstracts.create-unit-size(16);
+
+.header {
+  --padding-y: #{$header-padding-y};
+
+  padding-block: var(--padding-y);
+
+  @include abstracts.media(map.get(abstracts.$breakpoints, 'md')) {
+    --padding-y: #{$header-padding-y * 1.5};
+  }
+
+  @include abstracts.media(map.get(abstracts.$breakpoints, 'lg')) {
+    --padding-y: #{$header-padding-y * 2};
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 </style>

@@ -49,7 +49,7 @@ const links: RouterLink[] = [
   >
     <h2
       id="the-navbar-heading"
-      un-sr="only"
+      class="sr-only"
       v-text="$t('navbar.heading')"
     />
     <app-container>

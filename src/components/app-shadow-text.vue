@@ -25,7 +25,6 @@ $font-size: abstracts.create-unit-size(100);
 
 $stroke-width: abstracts.create-unit-size(1, em, 100);
 $stroke-color: var(--dark-100);
-$dark-stroke-color: var(--light-100);
 
 .shadow-text {
   position: relative;
@@ -49,7 +48,6 @@ $dark-stroke-color: var(--light-100);
     font-weight: map.get(abstracts.$font-primary-weights, 'black');
 
     @media (prefers-color-scheme: dark) {
-      -webkit-text-stroke-color: $dark-stroke-color;
       opacity: .1;
     }
   }

@@ -1,9 +1,8 @@
 import { type UserModule } from '~/types'
+import '@vue/runtime-core'
 
-const brandPrefix = '>_'
 const brand = {
-  brandPrefix,
-  brandName: `${brandPrefix}jakubreron.me`,
+  name: '>_jakubreron.me',
 }
 
 const socials = {
@@ -11,19 +10,17 @@ const socials = {
   github: 'https://github.com/jakubreron',
 }
 
-export const $constants = Object.assign(
-  brand,
-  socials,
+export const constants = Object.assign(
+  { brand },
+  { socials },
 )
 
 export const install: UserModule = ({ app }) => {
-  // TODO: check if it's still necessary to do it this way
-  app.config.globalProperties.$constants = $constants
+  app.config.globalProperties.$constants = constants
 }
 
 declare module '@vue/runtime-core' {
   interface ComponentCustomProperties {
-    // TODO: check if it's still necessary to do it this way
-    $constants: typeof $constants
+    $constants: typeof constants
   }
 }
