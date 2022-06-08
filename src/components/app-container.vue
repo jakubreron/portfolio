@@ -1,11 +1,12 @@
 <script setup lang="ts">
 interface Props {
   tag?: string
-  type?: 'narrow' | 'standard' | 'wide'
+  type?: 'adaptive' | 'fluid'
 }
 
 withDefaults(defineProps<Props>(), {
   tag: 'div',
+  type: 'adaptive',
 })
 </script>
 
@@ -21,31 +22,27 @@ withDefaults(defineProps<Props>(), {
 
 @use '~/styles/abstracts';
 
-$base-padding-x: abstracts.create-unit-size(16);
-$base-max-width: abstracts.create-unit-size(640);
-
-$types: (
-  'narrow': $base-max-width,
-  'standard': $base-max-width * 1.5,
-  'wide': $base-max-width * 2,
-);
+$px: 2rem;
 
 .container {
-  --padding-x: #{$base-padding-x};
-  --max-width: 100%;
+  --px: #{$px};
+  --mw: 100%; // 100% by default, without any data-type
 
-  width: min(100% - var(--padding-x), var(--max-width));
+  width: min(100% - var(--px), var(--mw));
   margin: 0 auto;
 
-  @each $type,
-  $max-width in $types {
-    &[data-type='#{$type}'] {
-      --max-width: #{$max-width};
+  &[data-type="adaptive"] {
+    @each $breakpoint, $width in abstracts.$breakpoints {
+      @include abstracts.media($breakpoint) {
+        --mw: #{$width};
+      }
     }
   }
 
-  @include abstracts.media(map.get(abstracts.$breakpoints, 'md')) {
-    --padding-x: #{$base-padding-x * 2};
+  &[data-type="fluid"] {
+    @include abstracts.media('md') {
+      --px: #{$px * 2};
+    }
   }
 }
 </style>

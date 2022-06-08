@@ -7,11 +7,14 @@ withDefaults(defineProps<Props>(), {
   seoTitle: 'Front-end Developer',
 })
 
+const header = ref<HTMLElement | null>(null)
+
 const delimiter = '|'
 </script>
 
 <template>
   <header
+    ref="header"
     :class="$style.header"
     aria-labelledby="the-header-heading"
   >
@@ -19,20 +22,17 @@ const delimiter = '|'
       <app-shadow-text
         id="the-header-heading"
         tag="h1"
-        un-max-w="3/4"
-        un-font="weight-light"
-        un-text="2xl md:3xl dark:light dark:opacity-50"
+        :class="$style.heading"
         :value="$constants.brand.name"
       >
         <router-link
-          un-display="block"
+          :class="$style.heading__link"
           :title="$t('routes.homepage')"
           :to="{ name: 'index' }"
         >
           <span
             translate="no"
             class="truncate"
-            un-display="block"
             v-text="$constants.brand.name"
           />
           <span
@@ -55,19 +55,19 @@ const delimiter = '|'
 @use 'sass:map';
 @use '~/styles/abstracts';
 
-$header-padding-y: abstracts.create-unit-size(16);
+$py: 1rem;
 
 .header {
-  --padding-y: #{$header-padding-y};
+  --py: #{$py};
 
-  padding-block: var(--padding-y);
+  padding-block: var(--py);
 
-  @include abstracts.media(map.get(abstracts.$breakpoints, 'md')) {
-    --padding-y: #{$header-padding-y * 1.5};
+  @include abstracts.media('md') {
+    --py: #{$py * 1.5};
   }
 
-  @include abstracts.media(map.get(abstracts.$breakpoints, 'lg')) {
-    --padding-y: #{$header-padding-y * 2};
+  @include abstracts.media('lg') {
+    --py: #{$py * 2};
   }
 }
 
@@ -75,5 +75,25 @@ $header-padding-y: abstracts.create-unit-size(16);
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.heading {
+  --font-size: var(--text-2xl);
+
+  max-width: 75%;
+  font-weight: var(--font-weight-primary-light);
+  font-size: var(--font-size);
+
+  @include abstracts.media('md') {
+    --font-size: var(--text-3xl);
+  }
+
+  @include abstracts.dark-mode {
+    opacity: .5;
+  }
+
+  &__link {
+    color: var(--light)
+  }
 }
 </style>

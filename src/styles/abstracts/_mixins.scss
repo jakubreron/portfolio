@@ -1,6 +1,6 @@
 @use 'sass:map';
-@use 'functions' as f;
-@use 'variables' as v;
+@use 'functions';
+@use 'variables';
 
 @mixin pseudo-styles($content: '') {
   content: $content;
@@ -17,9 +17,9 @@
     @include pseudo-styles {
       pointer-events: none;
       opacity: 0;
-      transition: opacity map.get(v.$transitions, 'quickest');
+      transition: opacity map.get(variables.$transitions, 'quickest');
       border: 1px solid currentcolor;
-      border-radius: f.create-unit-size(4);
+      border-radius: functions.create-unit-size(4);
       top: $y;
       right: $x;
       bottom: $y;
@@ -36,8 +36,9 @@
   }
 }
 
+// provide 'sm', 'md', 'lg'...
 @mixin media($breakpoint) {
-  @media (min-width: $breakpoint) {
+  @media (min-width: map.get(variables.$breakpoints, $breakpoint)) {
     @content;
   }
 }
@@ -47,5 +48,11 @@
     @each $shade-name, $shade-value in $shades {
       --#{$color-name}-#{$shade-name}: #{$shade-value};
     }
+  }
+}
+
+@mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    @content;
   }
 }

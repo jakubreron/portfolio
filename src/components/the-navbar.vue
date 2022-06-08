@@ -1,18 +1,10 @@
 <script setup lang="ts">
-import type { Route } from 'vite-plugin-pages'
-import type { TranslateResult } from 'vue-i18n'
-
-// TODO: move to the global types
-interface RouterLink extends Required<Pick<Route, 'name'>> {
-  text: TranslateResult
-}
+import { type RouterLink } from '~/types'
 
 const isActive = ref(false)
 
 const style = useCssModule()
-const navClasses = computed(() => {
-  return isActive.value ? [style.nav, style['nav--active']] : style.nav
-})
+const navClasses = computed(() => isActive.value ? [style.nav, style['nav--active']] : style.nav)
 
 const { t } = useI18n()
 
@@ -53,11 +45,10 @@ const links: RouterLink[] = [
       v-text="$t('navbar.heading')"
     />
     <app-container>
-      <ul
+      <menu
         id="the-navbar-menu"
         aria-labelledby="the-navbar-menu-activator"
-        role="menu"
-        :class="$style.nav__menu"
+        :class="$style.menu"
       >
         <li
           v-for="({ name, text }, index) in links"
@@ -68,10 +59,11 @@ const links: RouterLink[] = [
             :aria-current="$route.name === name ? 'page' : null"
             role="menuitem"
             :to="{ name }"
-            v-text="text"
-          />
+          >
+            {{ text }}
+          </router-link>
         </li>
-      </ul>
+      </menu>
     </app-container>
   </nav>
 </template>
@@ -80,25 +72,33 @@ const links: RouterLink[] = [
 @use 'sass:map';
 @use '~/styles/abstracts';
 
+$py: 1rem;
+
 .nav {
+  --py: #{$py};
+
   position: fixed;
   inset: 0;
   opacity: 0;
   transition: opacity map.get(abstracts.$transitions, 'quickest');
   pointer-events: none;
+  padding: var(--py) 0;
 
-  // @apply py-4 md:py-6 lg:py-8;
+  @include abstracts.media('md') {
+    --py: #{$py * 1.5};
+  }
 
-  /* TODO: get height from the nav */
-  margin-top: 76px;
-
-  &__menu {
-    text-align: right;
+  @include abstracts.media('lg') {
+    --py: #{$py * 2};
   }
 
   &--active {
     opacity: 1;
     pointer-events: auto;
   }
+}
+
+.menu {
+  text-align: right;
 }
 </style>

@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 $font-size: abstracts.create-unit-size(100);
 
-$stroke-width: abstracts.create-unit-size(1, em, 100);
+$stroke-width: 1px;
 $stroke-color: var(--dark-100);
 
 .shadow-text {
@@ -45,9 +45,9 @@ $stroke-color: var(--dark-100);
     left: -#{math.div(100, 3) * 1%};
 
     font-size: $font-size;
-    font-weight: map.get(abstracts.$font-primary-weights, 'black');
+    font-weight: var(--font-weight-primary-black);
 
-    @media (prefers-color-scheme: dark) {
+    @include abstracts.dark-mode {
       opacity: .1;
     }
   }

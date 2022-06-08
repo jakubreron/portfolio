@@ -20,7 +20,20 @@ body {
 :root {
   @include abstracts.generate-themes(themes.$light-theme);
 
-  @media (prefers-color-scheme: dark) {
+  @include abstracts.dark-mode {
     @include abstracts.generate-themes(themes.$dark-theme);
+  }
+
+  // TODO: move all to helper classes
+  @each $name, $weight in abstracts.$font-primary-weights {
+    --font-weight-primary-#{$name}: #{$weight};
+  }
+
+  @each $name, $weight in abstracts.$font-secondary-weights {
+    --font-weight-secondary-#{$name}: #{$weight};
+  }
+
+  @each $name, $size in abstracts.$font-sizes {
+    --text-#{$name}: #{$size};
   }
 }
