@@ -1,6 +1,5 @@
 {
   "private": true,
-  "packageManager": "pnpm@7.1.6",
   "scripts": {
     "build": "vite-ssg build",
     "dev": "vite --port 3333 --open",
@@ -40,7 +39,6 @@
     "https-localhost": "^4.7.1",
     "markdown-it-link-attributes": "^4.0.0",
     "markdown-it-prism": "^2.2.4",
-    "pnpm": "^7.1.6",
     "sass": "^1.52.1",
     "stylelint": "^14.8.5",
     "stylelint-config-recommended-vue": "^1.4.0",
