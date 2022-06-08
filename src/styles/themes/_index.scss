@@ -1,18 +1,2 @@
-@import 'light';
-@import 'dark';
-
-@mixin generate-themes($theme) {
-  @each $color-name, $shades in $theme {
-    @each $shade-name, $shade-value in $shades {
-      --#{$color-name}-#{$shade-name}: #{$shade-value};
-    }
-  }
-}
-
-:root {
-  @include generate-themes($light-theme);
-
-  @media (prefers-color-scheme: dark) {
-    @include generate-themes($dark-theme);
-  }
-}
+@forward 'light';
+@forward 'dark';

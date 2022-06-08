@@ -1,9 +1,8 @@
-@use '~/styles/abstracts/mixins' as m;
-@use '~/styles/abstracts/functions' as f;
+@use '~/styles/abstracts';
 
 a,
 .sr-only {
-  @include m.prepare-focus(f.create-unit-size(-5));
+  @include abstracts.prepare-focus(abstracts.create-unit-size(-5));
 }
 
 // TODO: implement base styles as following

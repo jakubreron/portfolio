@@ -36,13 +36,11 @@ const classNames = computed(() => {
 @use 'sass:math';
 @use 'sass:map';
 
-@use '~/styles/abstracts/mixins' as m;
-@use '~/styles/abstracts/functions' as f;
-@use '~/styles/abstracts/variables' as v;
+@use '~/styles/abstracts';
 
-$size: f.create-unit-size(48);
+$size: abstracts.create-unit-size(48);
 
-$stripe-thickness: f.create-unit-size(3);
+$stripe-thickness: abstracts.create-unit-size(3);
 $stripe-offset: math.div($size, 3.2);
 $stripe-width: math.div($size, 2);
 
@@ -68,7 +66,7 @@ $stripe-width: math.div($size, 2);
 
   &::before,
   &::after {
-    @include m.pseudo-styles;
+    @include abstracts.pseudo-styles;
 
     inset: 0;
     opacity: 0;
@@ -78,11 +76,11 @@ $stripe-width: math.div($size, 2);
     background-color: var(--dark-100);
     opacity: .1;
     transition-property: opacity, transform;
-    transition: map.get(v.$transitions, 'quickest');
+    transition: map.get(abstracts.$transitions, 'quickest');
   }
 
   &::after {
-    transition: opacity map.get(v.$transitions, 'quickest');
+    transition: opacity map.get(abstracts.$transitions, 'quickest');
     border: 1px solid currentColor;
   }
 
@@ -109,7 +107,7 @@ $stripe-width: math.div($size, 2);
     &,
     &::before,
     &::after {
-      border-radius: f.create-unit-size(4);
+      border-radius: abstracts.create-unit-size(4);
       pointer-events: none;
       background-color: var(--dark-100);
       margin: auto;
@@ -120,8 +118,8 @@ $stripe-width: math.div($size, 2);
 
     &::before,
     &::after {
-      @include m.pseudo-styles;
-      transition: transform map.get(v.$transitions, 'quick')
+      @include abstracts.pseudo-styles;
+      transition: transform map.get(abstracts.$transitions, 'quick')
     }
 
     &::before {

@@ -19,13 +19,11 @@ const props = withDefaults(defineProps<Props>(), {
 @use 'sass:map';
 @use 'sass:math';
 
-@use '~/styles/abstracts/functions' as f;
-@use '~/styles/abstracts/mixins' as m;
-@use '~/styles/abstracts/variables' as v;
+@use '~/styles/abstracts';
 
-$font-size: f.create-unit-size(100);
+$font-size: abstracts.create-unit-size(100);
 
-$stroke-width: f.create-unit-size(1, em, 100);
+$stroke-width: abstracts.create-unit-size(1, em, 100);
 $stroke-color: var(--dark-100);
 $dark-stroke-color: var(--light-100);
 
@@ -34,7 +32,7 @@ $dark-stroke-color: var(--light-100);
 
   &::before {
     // NOTE: "content" only allows the strings, we cannot use the v-bind('props.value') (it creates a css variable) here
-    @include m.pseudo-styles(attr(data-text));
+    @include abstracts.pseudo-styles(attr(data-text));
 
     -webkit-text-stroke: $stroke-width;
     -webkit-text-stroke-color: $stroke-color;
@@ -48,7 +46,7 @@ $dark-stroke-color: var(--light-100);
     left: -#{math.div(100, 3) * 1%};
 
     font-size: $font-size;
-    font-weight: map.get(v.$font-primary-weights, 'black');
+    font-weight: map.get(abstracts.$font-primary-weights, 'black');
 
     @media (prefers-color-scheme: dark) {
       -webkit-text-stroke-color: $dark-stroke-color;

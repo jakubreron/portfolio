@@ -19,12 +19,10 @@ withDefaults(defineProps<Props>(), {
 @use 'sass:map';
 @use 'sass:math';
 
-@use '~/styles/abstracts/functions' as f;
-@use '~/styles/abstracts/mixins' as m;
-@use '~/styles/abstracts/variables' as v;
+@use '~/styles/abstracts';
 
-$base-padding-x: f.create-unit-size(16);
-$base-max-width: f.create-unit-size(640);
+$base-padding-x: abstracts.create-unit-size(16);
+$base-max-width: abstracts.create-unit-size(640);
 
 $types: (
   'narrow': $base-max-width,
@@ -46,7 +44,7 @@ $types: (
     }
   }
 
-  @include m.media(map.get(v.$breakpoints, 'md')) {
+  @include abstracts.media(map.get(abstracts.$breakpoints, 'md')) {
     --padding-x: #{$base-padding-x * 2};
   }
 }

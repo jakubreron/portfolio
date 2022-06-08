@@ -78,13 +78,13 @@ const links: RouterLink[] = [
 
 <style module lang="scss">
 @use 'sass:map';
-@use '~/styles/abstracts/variables' as v;
+@use '~/styles/abstracts';
 
 .nav {
   position: fixed;
   inset: 0;
   opacity: 0;
-  transition: opacity map.get(v.$transitions, 'quickest');
+  transition: opacity map.get(abstracts.$transitions, 'quickest');
   pointer-events: none;
 
   // @apply py-4 md:py-6 lg:py-8;

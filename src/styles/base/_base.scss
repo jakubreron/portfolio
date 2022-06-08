@@ -1,4 +1,6 @@
 @use 'sass:map';
+@use '~/styles/abstracts';
+@use '~/styles/themes';
 
 html,
 body,
@@ -11,6 +13,14 @@ body,
 body {
   background-color: var(--light-100);
   color: var(--dark-100);
-  font-family: $font-primary, sans-serif;
-  font-size: $font-size-body;
+  font-family: abstracts.$font-primary, sans-serif;
+  font-size: abstracts.$font-size-body;
+}
+
+:root {
+  @include abstracts.generate-themes(themes.$light-theme);
+
+  @media (prefers-color-scheme: dark) {
+    @include abstracts.generate-themes(themes.$dark-theme);
+  }
 }

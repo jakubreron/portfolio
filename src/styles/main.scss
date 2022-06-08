@@ -1,25 +1,25 @@
 @charset "UTF-8";
 
 // 1. Configuration and helpers
-@import 'abstracts';
+@use 'abstracts';
 
 // 2. Vendors
-@import 'vendors';
+@use 'vendors';
 
 // 3. Base stuff
-@import 'base';
+@use 'base';
 
 // 4. Layout-related sections
-@import 'layout';
+@use 'layout';
 
 // 5. Components
-@import 'components';
+@use 'components';
 
 // 6. Page-specific styles
-@import 'pages';
+@use 'pages';
 
 // 7. Themes
-@import 'themes';
+@use 'themes';
 
 // 8. Utilities
-@import 'utilities';
+@use 'utilities';

@@ -41,3 +41,11 @@
     @content;
   }
 }
+
+@mixin generate-themes($theme) {
+  @each $color-name, $shades in $theme {
+    @each $shade-name, $shade-value in $shades {
+      --#{$color-name}-#{$shade-name}: #{$shade-value};
+    }
+  }
+}
