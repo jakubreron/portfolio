@@ -15,3 +15,12 @@ select::-moz-focus-inner,
 input[type='file'] > input[type='button']::-moz-focus-inner {
   outline: none !important;
 }
+
+@media screen and (prefers-reduced-motion: reduce) {
+  * {
+    /* Very short durations means JavaScript that relies on events still works */
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
